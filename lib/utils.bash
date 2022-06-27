@@ -4,7 +4,7 @@ set -euo pipefail
 
 GH_REPO="https://github.com/regclient/regclient"
 TOOL_NAME="regctl"
-TOOL_TEST="regctl --version"
+TOOL_TEST="regctl version"
 
 fail() {
   echo -e "asdf-$TOOL_NAME: $*"
