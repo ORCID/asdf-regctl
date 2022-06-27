@@ -37,13 +37,7 @@ download_release() {
   version="$1"
   filename="$2"
 
-  local platform_test=$(uname | tr '[:upper:]' '[:lower:]')
-
-  if [[ "$platform_test" = darwin ]]; then
-    local platform=mac
-  else
-    local platform=$platform_test
-  fi
+  local platform=$(uname | tr '[:upper:]' '[:lower:]')
 
   local arch_test=$(uname -m)
 
@@ -53,7 +47,7 @@ download_release() {
     local arch=$arch_test
   fi
 
-  url="$GH_REPO/releases/download/v${version}/regctl-${platform}${arch}"
+  url="$GH_REPO/releases/download/v${version}/regctl-${platform}-${arch}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
